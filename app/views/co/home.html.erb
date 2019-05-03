@@ -1,0 +1,16 @@
+<center><h1><u>Day0の質問</u></h1></center>
+
+<br>
+
+質問 
+<%= form_with model: @item, local: true do |form| %>
+質問　質問者:<%= form.text_field :shitumonsya %>
+質問文:<%= form.text_area :shitumonbun %>
+日時:<%= form.text_field :nitiji %>
+<%= form.submit "投稿" %>
+<% end %>
+
+<br>
+
+
+質問 <%= @x[0].shitumonsya %> : <%= @x[0].shitumonbun %> <%= @x[0].nitiji %>

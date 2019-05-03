@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Kasitumon.create(
+  nitiji: "5/2 23:02",
+  koumoku: "Day0",
+  shitumonsya: "芦原",
+  shitumonbun: "○○がわかりません｡",
+  nitiji1: "",
+  hentousya1: "",
+  hentoubun1: ""
+  )
