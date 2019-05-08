@@ -1,16 +1,43 @@
-<center><h1><u>Day0の質問</u></h1></center>
+<center><h1><u>Day0の質問</u></h1></center><br>
 
-<br>
+ <%= form_with model: @y, url: { action: "create" },local: true do |form| %>
+     質問   質問者:<%= form.text_field :shitumonsya %>
+     質問文:<%= form.text_area :shitumonbun %>
+     <%= form.submit "投稿" %>
+ <% end %>
+<hr><hr>
+<% @x.each do |xx| %>
+ 質問  <%= xx.shitumonsya %> : <%= xx.shitumonbun %>  <%= xx.nitiji %><br>
+ <% if xx.nitiji1 == nil  ||  xx.nitiji1 == "" then %>
+   <%= form_with model: xx, url: { action: "update" },local: true do |form| %>
+   > 返答 返答者:<%= form.text_field :hentousya1 %>
+       返答文:<%= form.text_area :hentoubun1 %>
+       <%= form.number_field :id , value: xx.id %>
+       <%= form.submit "返答" %>
+   <% end %>
+ <% else %>
+     > 返答  <%= xx.hentousya1 %> : <%= xx.hentoubun1 %>  <%= xx.nitiji1 %><br>
+     <% if xx.nitiji2 == nil ||  xx.nitiji2 == "" then %>
+       <%= form_with model: xx, url: { action: "update" },local: true do |form| %>
+       >> 返答 返答者:<%= form.text_field :hentousya2 %>
+           返答文:<%= form.text_area :hentoubun2 %>
+           <%= form.number_field :id , value: xx.id %>
+           <%= form.submit "返答" %>
 
-質問 
-<%= form_with model: @item, local: true do |form| %>
-質問　質問者:<%= form.text_field :shitumonsya %>
-質問文:<%= form.text_area :shitumonbun %>
-日時:<%= form.text_field :nitiji %>
-<%= form.submit "投稿" %>
+       <% end %>
+     <% else %>
+         >> 返答  <%= xx.hentousya2 %> : <%= xx.hentoubun2 %>  <%= xx.nitiji2 %><br>
+         <% if xx.nitiji3 == nil ||  xx.nitiji3 == "" then %>
+           <%= form_with model: xx, url: { action: "update" },local: true do |form| %>
+           >>> 返答 返答者:<%= form.text_field :hentousya3 %>
+               返答文:<%= form.text_area :hentoubun3 %>
+               <%= form.number_field :id , value: xx.id %>
+               <%= form.submit "返答" %>
+           <% end %>
+         <% else %>
+             >>> 返答  <%= xx.hentousya3 %> : <%= xx.hentoubun3 %>  <%= xx.nitiji3 %><br>
+         <% end %>
+     <% end %>
+ <% end %>
+ <hr>
 <% end %>
-
-<br>
-
-
-質問 <%= @x[0].shitumonsya %> : <%= @x[0].shitumonbun %> <%= @x[0].nitiji %>
